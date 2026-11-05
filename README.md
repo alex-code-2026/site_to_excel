@@ -8,23 +8,27 @@
 - Цена в Excel записывается как число с валютным форматом (`$`), что позволяет сортировать данные и использовать формулы.
 
 ## Установка и запуск (без Docker)
+
 1. Установите зависимости:
-   ```bash
-   pip install -r requirements.txt
+
+    pip install -r requirements.txt
+
 2. Запустите скрипт:
-    ```bash
+
     python excel_data.py
-3. Результат появится в файле products.xlsx
 
-Запуск через Docker
-Если у вас установлен Docker, вы можете запустить проект в изолированном контейнере:
+3. Результат появится в файле `products.xlsx`.
 
-1.Соберите образ:
+## Запуск через Docker
 
-   ```bash
-   docker build -t my-parser .
-2.Запустите контейнер (файл products.xlsx появится в текущей папке):
+Если у вас установлен Docker, вы можете запустить проект в изолированном контейнере.
 
-   ```bash
-   docker run --rm -v "%cd%:/app" my-parser
-(Для Mac/Linux используйте -v "$(pwd):/app")
+1. Соберите образ:
+
+    docker build -t my-parser .
+
+2. Запустите контейнер (файл `products.xlsx` появится в текущей папке):
+
+    docker run --rm -v "%cd%:/app" my-parser
+
+*(Для Mac/Linux используйте `-v "$(pwd):/app"`)*
