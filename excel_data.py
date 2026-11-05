@@ -1,16 +1,10 @@
-"""
-Модуль сохранения данных о товарах в Excel.
-Импортирует генератор one_card() из parser.py, собирает данные
-и записывает их в таблицу .xlsx с валютным форматированием.
-"""
-
 import os
 import xlsxwriter
 from parser import one_card
 
 
 # Куда сохраняем файл и как называем колонки
-OUT_FILE = r"E:\site_to_excel\products.xlsx"
+OUT_FILE = "products.xlsx"
 HEADERS = ["Название", "Цена", "Описание", "Картинка", "Категория", "Наличие"]
 
 
@@ -25,13 +19,11 @@ def _price(value):
 def save_to_excel(rows, path=OUT_FILE):
     """
     Записывает данные из итератора rows в Excel-файл.
-
-    Args:
-        rows: итератор кортежей (название, цена, описание, картинка, категория, наличие).
-        path: путь к сохраняемому файлу (по умолчанию OUT_FILE).
     """
-    # Создаем папку для файла, если ее еще нет
-    os.makedirs(os.path.dirname(path), exist_ok=True)
+    # Создаем папку, ТОЛЬКО если в пути она указана (защита от пустой строки)
+    dir_name = os.path.dirname(path)
+    if dir_name:
+        os.makedirs(dir_name, exist_ok=True)
 
     workbook = xlsxwriter.Workbook(path)
     sheet = workbook.add_worksheet()
