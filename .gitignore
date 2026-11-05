@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+products.xlsx
+~$products.xlsx
+first_file.py
+parser_test_req.py
+py_file_req.py
+копия парсера2.py
+парсер_другого_сайта_машины.py
