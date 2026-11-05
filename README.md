@@ -9,26 +9,30 @@
 
 ## Установка и запуск (без Docker)
 
-1. Установите зависимости:
+Скачайте проект, откройте терминал в его папке и выполните команды по порядку:
 
-    pip install -r requirements.txt
+```bash
+# 1. Установите зависимости
+pip install -r requirements.txt
 
-2. Запустите скрипт:
-
-    python excel_data.py
-
-3. Результат появится в файле `products.xlsx`.
+# 2. Запустите скрипт
+```bash
+python excel_data.py
 
 ## Запуск через Docker
 
-Если у вас установлен Docker, вы можете запустить проект в изолированном контейнере.
+Если у вас установлен Docker, выполните следующие команды:
 
-1. Соберите образ:
+```bash
+# 1. Соберите образ
+docker build -t my-parser .
 
-    docker build -t my-parser .
+# 2. Запустите контейнер (файл products.xlsx появится в текущей папке)
+```bash
+docker run --rm -v "%cd%:/app" my-parser
 
-2. Запустите контейнер (файл `products.xlsx` появится в текущей папке):
+Для пользователей Mac/Linux:
+Команда запуска контейнера выглядит немного иначе:
 
-    docker run --rm -v "%cd%:/app" my-parser
-
-*(Для Mac/Linux используйте `-v "$(pwd):/app"`)*
+```bash
+docker run --rm -v "$(pwd):/app" my-parser
